@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logomark from "../../assets/logomark.png";
 import axios from "axios";
@@ -9,6 +9,7 @@ export default function SignupPage() {
   const [name, setName] = useState([]);
   const [image, setImage] = useState([]);
   const [password, setPassword] = useState([]);
+  const navigate = useNavigate();
 
   function signupRequest() {
     const signupData = {
@@ -21,7 +22,10 @@ export default function SignupPage() {
       "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up",
       signupData
     );
-    request.then((success) => console.log(success));
+    request.then((success) => {
+      console.log(success);
+      navigate("/")
+    });
     request.catch((problem) => {
       //console.log(problem.response);
       alert(`Ocorreu uma falha no cadastro. ${problem.response.data.message}`);

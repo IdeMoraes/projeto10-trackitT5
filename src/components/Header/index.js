@@ -21,6 +21,9 @@ const HeaderDiv = styled.div`
   align-items: center;
   padding-left: 18px;
   padding-right: 18px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
   img {
     width: 51px;
     height: 51px;
