@@ -17,7 +17,7 @@ export default function NavigationBar(){
 
 const NavigationDiv= styled.div`
     height: 70px;
-    background-color: white;
+    background-color: #FFFFFF;
     display: flex;
     justify-content: space-between;
     align-items: center;

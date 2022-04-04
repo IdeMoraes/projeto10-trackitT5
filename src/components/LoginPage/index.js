@@ -8,6 +8,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState([]);
   const [password, setPassword] = useState([]);
   const navigate = useNavigate();
+  const [userData,setUserData]=useState([]);
 
   function loginRequest() {
     const loginData = {
@@ -18,12 +19,21 @@ export default function LoginPage() {
       "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login",
       loginData
     );
-    request.then((success) => {console.log(success);navigate("/hoje")});
+    request.then(({data}) => {
+      console.log(data);
+      setUserData(data);
+      //console.log(userData);
+      navigate("/hoje")
+    });
+
     request.catch((problem) => {
       //console.log(problem.response);
       alert(`Ocorreu uma falha no login. ${problem.response.data.message}`);
     });
+  
   }
+  console.log(userData); //não presta dentro de loginRequest;
+  
   return (
     <LoginPageContainer>
       <LogomarkImage src={logomark} alt="logomark" />
